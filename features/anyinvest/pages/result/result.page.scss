@@ -1,0 +1,57 @@
+.investiments__grid {
+  display: flex;
+  overflow: auto;
+  gap: 10px;
+  padding: 16px 5px;
+  margin-top: 10px;
+
+  .cards_investiments {
+    min-width: 230px;
+    height: 120px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .06);
+    border: solid 1px;
+    border-color: var(--border);
+    color: var(--muted);
+    flex-direction: column;
+    justify-content: space-between;
+
+    .cards_investiments__box {
+      min-width: 100%;
+
+      .cards_investiments__title {
+        margin: 0;
+      }
+
+      .cards_investiments__subtitle {
+        margin: 5px 0;
+      }
+    }
+
+    .cards_investiments__information {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+
+      .risk-color {
+        width: 30px;
+        height: 8px;
+        border-radius: 10px;
+        bottom: 10px;
+        left: 10px;
+        cursor: pointer;
+      }
+
+      .tooltip-info {
+        font-size: 12px;
+        min-width: 50px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  }
+}

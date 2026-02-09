@@ -1,0 +1,11 @@
+.side{ padding: 16px; box-shadow: var(--shadow)}
+.side__title{ font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.side__list{ display:flex; flex-direction: column; gap: 10px; }
+.item{ display:flex; gap: 10px; align-items: center; padding: 10px; border-radius: 12px; border: 1px solid var(--border); background: #fff; }
+.item.is-active{ border-color: var(--primary); }
+.item.is-done{ opacity: .85; }
+.dot{ width: 12px; height: 12px; border-radius: 999px; background: #c8d6ee; }
+.item.is-active .dot{ background: var(--primary); }
+.item.is-done .dot{ background: #2fd39a; }
+.name{ font-weight: 500; font-size: 13px; }
+.meta{ font-weight: 500; color: var(--muted); font-size: 12px; }

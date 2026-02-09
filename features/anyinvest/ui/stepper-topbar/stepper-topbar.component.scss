@@ -1,0 +1,5 @@
+.top{ background: #fff;
+  margin-bottom: 16px; border: 1px solid var(--border); border-radius: 14px; padding: 12px; box-shadow: var(--shadow); }
+.top__row{ display:flex; align-items:center; justify-content: space-between; gap: 12px; }
+.top__title{ font-weight: 500; color: var(--text); }
+.top__meta{ font-weight: 500; color: var(--muted); }

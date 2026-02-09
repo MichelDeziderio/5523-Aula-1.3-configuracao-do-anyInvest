@@ -1,0 +1,6 @@
+<div class="alert" [class]="alert().type + (alert().visible ? ' active' : '')">
+  <p class="title">{{alert().title}}</p>
+  <p class="message">{{ alert().message }}</p>
+
+  <button type="button" (click)="close()">×</button>
+</div>

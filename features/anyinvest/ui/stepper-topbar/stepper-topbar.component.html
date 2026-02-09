@@ -1,0 +1,9 @@
+<div class="top">
+  <div class="top__row">
+    <div class="top__title">{{ steps[current] }}</div>
+    <div class="top__meta">{{ current + 1 }} / {{ steps.length }}</div>
+  </div>
+  <div class="bar">
+    <span [style.width.%]="((current + 1) / steps.length) * 100"></span>
+  </div>
+</div>

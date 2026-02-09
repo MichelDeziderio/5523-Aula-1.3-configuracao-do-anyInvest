@@ -1,0 +1,165 @@
+.topbar {
+  background: var(--black);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.topbar__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 950;
+  white-space: nowrap;
+  font-size: 20px;
+}
+
+
+.brand__name i {
+  font-weight: 300;
+  opacity: .92;
+}
+
+.nav {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-weight: 750;
+}
+
+.nav:hover {
+  color: #fff;
+}
+
+.search {
+  margin-left: auto;
+  margin-right: auto;
+  width: min(520px, 46vw);
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, .30);
+  border-radius: 999px;
+  padding: 6px 10px;
+  gap: 10px;
+}
+
+.search__input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, .92);
+  font-weight: 700;
+}
+
+.search__input::placeholder {
+  color: rgba(255, 255, 255, .45);
+}
+
+.search__btn {
+  height: 32px;
+  width: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .18);
+  background: rgba(255, 255, 255, .06);
+  color: #fff;
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user {
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.avatar {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .nav {
+    display: none;
+  }
+
+  .search {
+    width: min(420px, 42vw);
+  }
+}
+
+@media (max-width: 700px) {
+  .search {
+    display: none;
+  }
+}
+
+.topbar {
+  .actions {
+    position: relative;
+
+    .menu {
+      position: absolute;
+      background-color: var(--menu-bg);
+      // box-shadow: var(--shadow);
+      box-shadow: 0 0px 20px rgba(0, 0, 0, 0.20);
+      // border: 1px solid var(--border);
+      width: 180px;
+      height: 0px;
+      overflow: hidden;
+      top: 45px;
+      right: 4px;
+      border-radius: 8px;
+      opacity: 0;
+      transition: ease-in-out 0.2s;
+
+      &.active {
+        height: 90px;
+        opacity: 1;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0px 20px;
+
+        li {
+          border-bottom: solid 1px var(--border);
+          padding: 5px 0;
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+
+        a {
+          text-decoration: none;
+          color: var(--black);
+          transition: ease-in-out 0.2s;
+          display: block;
+          font-weight: 500;
+
+          &:hover {
+            color: var(--primary-2);
+          }
+        }
+      }
+    }
+  }
+}

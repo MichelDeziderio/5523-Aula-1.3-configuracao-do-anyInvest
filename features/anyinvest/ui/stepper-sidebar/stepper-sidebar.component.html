@@ -1,0 +1,14 @@
+<aside class="side card">
+  <div class="side__title">Perfil</div>
+  <nav class="side__list">
+    @for (s of steps; track $index) {
+      <div class="item" [class.is-active]="$index === current" [class.is-done]="$index < current">
+        <div class="dot"></div>
+        <div class="label">
+          <div class="name">{{ s }}</div>
+          <div class="meta">Etapa {{ $index + 1 }}</div>
+        </div>
+      </div>
+    }
+  </nav>
+</aside>

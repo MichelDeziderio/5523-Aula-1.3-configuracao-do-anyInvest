@@ -1,0 +1,125 @@
+<section class="card result">
+  <header class="result__head">
+    <div>
+      @if(!isShowMoreInfo) {
+        <h2 class="h2">Seu perfil é</h2>
+      }@else {
+        <h2 class="h2">Olá {{name}}, seu perfil é</h2>
+      }
+
+      <div class="result__profile">{{ profile }}</div>
+      <p class="p">Calculado com base no seu horizonte, liquidez, experiência e tolerância a risco.</p>
+    </div>
+
+    @if(!isShowMoreInfo) {
+    <a class="btn ghost" routerLink="/anyinvest/perfil">Meu perfil</a>
+    }
+  </header>
+
+  <div class="result__meter">
+    <div class="result__scale">
+      <span>Conservador</span>
+      <span>Moderado</span>
+      <span>Arrojado</span>
+    </div>
+
+    <div class="bar">
+      <span [style.width.%]="pct"></span>
+    </div>
+
+    <div class="result__pct">{{ pct }}%</div>
+  </div>
+
+  @if(isShowMoreInfo) {
+  <div class="result__show">
+    <button class="btn ghost" (click)="isShowDetails = !isShowDetails">
+      {{ isShowDetails ? 'Ver menos detalhes' : 'Ver mais detalhes' }}
+    </button>
+  </div>
+  }
+
+  @if(isShowDetails) {
+  <div class="result__grid">
+    <div class="card mini">
+      <div class="mini__title">Por que esse perfil?</div>
+      <ul class="why">
+        @for (w of result().explanation; track $index) {
+        <li>{{ w }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="card mini">
+      <div class="mini__title">Resumo</div>
+      <div class="summary">
+        <div class="row"><span>Objetivo</span>{{ state.form.get('goal')?.value }}</div>
+        <div class="row"><span>Horizonte</span>{{ state.form.get('horizon')?.value }}</div>
+        <div class="row"><span>Liquidez</span>{{ state.form.get('liquidityNeed')?.value }}</div>
+        <div class="row"><span>Experiência</span>{{ state.form.get('experienceLevel')?.value }}</div>
+        <div class="row"><span>Preferência</span>{{ state.form.get('preference')?.value }}</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="result__footer">
+    @if(isShowMoreInfo) {
+      <button class="btn primary" type="button" (click)="reset()">Investir</button>
+    }
+    <button class="btn" type="button" (click)="reset()">Refazer perfil</button>
+  </footer>
+  }
+</section>
+
+<section class="card investiments">
+  <div class="investiments__head">
+    <h2 class="h2 investiments__title">{{isInvestimentsLoaded ? 'Meus investimentos' : 'Sugestões de investimentos'}}</h2>
+    
+    
+      <p class="p investiments__subtitle">
+        @if(!isInvestimentsLoaded) {
+          Baseado no seu perfil <strong>{{ profile }}</strong>
+        } @else {
+          {{investimetTotal | currency:'BRL':'symbol':'1.2-2'}}
+        }
+      </p>
+    
+  </div>
+
+  <div class="investiments__grid">
+    @for (investment of isInvestimentsList; track $index) {
+    <div class="cards_investiments">
+      
+      <div class="cards_investiments__box">
+        <h4 class="cards_investiments__title">{{ investment.label }}</h4>
+        <p class="cards_investiments__subtitle">{{ investment.categoria }}</p>
+      </div>
+      
+      <div class="cards_investiments__information">
+        <div class="risk-color" [style.background]="investment.colors.text"></div>
+        
+        <div class="tooltip-info">
+          @switch(investment.categoria) {
+            @case('Renda Fixa') {
+              <span class="tooltip-info__text">Risco Baixo</span>
+            }
+            @case('Fundos') {
+              <span class="tooltip-info__text">Risco Médio</span>
+            }
+            @case('Renda Variável') {
+              <span class="tooltip-info__text">Risco Alto</span>
+            }
+          }
+        </div>
+
+        @if(investimetTotal && investment.percent) {
+          <div>{{investimetTotal / 100 * investment.percent | currency:'BRL':'symbol':'1.2-2'}}</div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+
+  <footer class="result__footer">
+    <button class="btn primary" type="button" routerLink="/anyinvest/investir">Investir</button>
+  </footer>
+</section>

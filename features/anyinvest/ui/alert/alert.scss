@@ -1,0 +1,51 @@
+.alert {
+  position: fixed;
+  top: -160px;
+  right: 16px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  color: #fff;
+  border: 0;
+  align-items: center;
+  z-index: 1000;
+  transition: ease-in-out 200ms;
+  border-top: 4px solid rgba(255, 255, 255, 0.6);
+  width: 260px;
+
+  &.active {
+    top: 16px;
+  }
+
+  &.success {
+    background: var(--bg-success);
+  }
+
+  &.error {
+    background: var(--bg-error);
+  }
+
+  p {
+    margin: 5px 0;
+  }
+
+  .title {
+    font-weight: 600;
+  }
+
+  .message {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+
+  button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+  }
+}

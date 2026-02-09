@@ -1,0 +1,36 @@
+<div class="fs" [class.is-open]="open" [class.is-disabled]="disabled">
+  <!-- TRIGGER -->
+  <button
+    type="button"
+    class="fs__trigger"
+    (click)="toggle()"
+    aria-haspopup="listbox"
+    [attr.aria-expanded]="open"
+  >
+    <span class="fs__placeholder">
+      {{ selectedLabel ?? placeholder }}
+    </span>
+    <span class="fs__arrow" aria-hidden="true"></span>
+  </button>
+
+  <!-- DROPDOWN -->
+  @if (open) {
+    <div class="fs__dropdown" role="listbox">
+      <div class="fs__divider"></div>
+
+      @for (opt of options; track opt.id) {
+        <button
+          type="button"
+          class="fs__option"
+          role="option"
+          [class.is-selected]="opt.id === value"
+          [class.is-disabled]="!!opt.disabled"
+          [disabled]="!!opt.disabled"
+          (click)="select(opt)"
+        >
+          {{ opt.label }}
+        </button>
+      }
+    </div>
+  }
+</div>

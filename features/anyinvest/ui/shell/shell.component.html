@@ -1,0 +1,31 @@
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" routerLink="/">
+      <span class="brand__name">Any<i>Invest</i></span>
+    </a>
+
+    <div class="actions">
+      @if (auth.currentUser) {
+        <span class="user">{{ auth.currentUser.name }}</span>
+        <button class="btn avatar" type="button" (click)="isShowMenu = !isShowMenu">
+          <img src="assets/avatar.svg" alt="">
+        </button>
+
+        <div class="menu" [class.active]="isShowMenu">
+          <ul>
+            <li><a routerLink="/anyinvest/perfil" (click)="isShowMenu = !isShowMenu">Meu perfil</a></li>
+            <li><a routerLink="/" (click)="logout(); isShowMenu = !isShowMenu">Sair</a></li>
+          </ul>
+        </div>
+
+      } @else {
+        <a class="btn primary" routerLink="/cadastro">Abrir conta</a>
+        <a class="btn ghost-login " routerLink="/login">Login</a>
+      }
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <router-outlet />
+</main>
